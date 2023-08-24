@@ -13,7 +13,7 @@ export class ShoppingListComponent {
     new Ingredient('Oranges', 3)
   ];
 
-  onIngredientAdded(newIngredient:Ingredient) {
+  onIngredientAdded(newIngredient: Ingredient) {
     this.ingredients.push(newIngredient)
   }
 }
