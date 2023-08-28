@@ -1,20 +1,18 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { Recipe } from '../recipe.model';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-list',
   templateUrl: './recipe-list.component.html',
   styleUrls: ['./recipe-list.component.css']
 })
-export class RecipeListComponent {
-  @Output() recipeWasSelected = new EventEmitter<Recipe>()
+export class RecipeListComponent implements OnInit{
+  recipes: Recipe[];
 
-  recipes: Recipe[] = [
-  new Recipe('Sandwich', 'Simple sandwich', 'https://somethingaboutsandwiches.com/wp-content/uploads/2022/04/ham-sandwich.jpg'),
-  new Recipe('Neapolitan Pizza', 'Neapolitan pizza, also known as Naples-style pizza, is a style of pizza made with tomatoes and mozzarella cheese', `https://vincenzosplate.com/wp-content/uploads/2022/08/1500x1500-Photo-1_1968-How-to-MAKE-NEAPOLITAN-PIZZA-with-Dry-Yeast-at-Home-Better-than-a-Pizzeria-in-Naples-V1.jpg`)
-  ];
+  constructor(private recipeService: RecipeService) {}
 
-  onRecipeSelected(recipe: Recipe) {
-    this.recipeWasSelected.emit(recipe);    
+  ngOnInit() {
+      this.recipes = this.recipeService.getRecipes();
   }
 }
