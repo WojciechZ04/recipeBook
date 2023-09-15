@@ -7,9 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class AppComponent {
   loadedOption = 'recipes';
-
-  onOptionClicked(option)  {
-    this.loadedOption = option;
-  }
   title = 'PROJECT';
 }
